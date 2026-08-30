@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login - NoteVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    body {
+     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .login-container img {
+      width: 70px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ffe6f7;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    input::placeholder {
+      color: #ddd;
+    }
+
+    button {
+      background: #00ffd0;
+      color: #1a1a1a;
+      font-weight: bold;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #38f990;
+    }
+
+    a {
+      color: #d4caff;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: block;
+      margin-top: 15px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/1250/1250688.png" alt="Admin Icon" />
+    <h2>Teacher Admin Login</h2>
+    <input type="text" id="adminName" placeholder="👤 Username (e.g., A)">
+    <input type="password" id="adminPass" placeholder="🔐 Password (e.g., 1)">
+    <button onclick="adminLogin()">Proceed to Dashboard</button>
+    <a href="#" onclick="alert('Please contact your coordinator to reset your key.')">Forgot Password?</a>
+  </div>
+
+  <script>
+    function adminLogin() {
+      const name = document.getElementById('adminName').value.trim();
+      const pass = document.getElementById('adminPass').value.trim();
+
+      const teacherKeys = {
+        A1: "maths_dashboard.html",
+        B1: "cfdp_dashboard.html",
+        C1: "it_dashboard.html",
+        D1: "cpp_dashboard.html",
+        E1: "java_dashboard.html",
+        F1: "micro_dashboard.html",
+        G1: "php_dashboard.html",
+        H1: "c_dashboard.html",
+        I1: "english_dashboard.html",
+        J1: "dbms_dashboard.html",
+        K1: "graphics_dashboard.html",
+        L1: "os_dashboard.html",
+        M1: "linux_dashboard.html",
+        N1: "algorithm_dashboard.html"
+      };
+
+      const userKey = name + pass;
+
+      if (teacherKeys[userKey]) {
+        window.location.href = teacherKeys[userKey];
+      } else {
+        alert('Invalid credentials. Please check your key.');
+      }
+    }
+  </script>
+</body>
+</html>

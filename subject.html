@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Subject</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .subject-box {
+      padding: 20px;
+      margin: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 18px;
+      background: #fdfdfd;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .subject-box:hover {
+      background: #e3eaff;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h2>Choose Your Subject</h2>
+    <div id="subjectContainer" class="dropdowns"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const course = urlParams.get('course');
+    const sem = urlParams.get('sem');
+
+    const subjects = {
+      bca: {
+        1: ["ENGLISH", "CFDP", "MATHS", "STATI"],
+        2: ["ENGLISH", "DBMS", "COA", "MATHS"],
+        3: ["MICRO", "OS", "GRAPHICS", "DS"],
+        4: ["SASE", "ALGORITHM", "LINUX", "PHP"],
+        5: ["NETWORK", "IT", "JAVA", "OPEN"]
+      }
+    };
+
+    const subjectContainer = document.getElementById("subjectContainer");
+    if (subjects[course] && subjects[course][sem]) {
+      subjects[course][sem].forEach(subject => {
+        const div = document.createElement("div");
+        div.className = "subject-box";
+        div.innerText = subject;
+        div.onclick = () => {
+          window.location.href = `resource.html?course=${course}&sem=${sem}&subject=${subject}`;
+        };
+        subjectContainer.appendChild(div);
+      });
+    } else {
+      subjectContainer.innerHTML = "<p>No subjects available.</p>";
+    }
+  </script>
+</body>
+</html>

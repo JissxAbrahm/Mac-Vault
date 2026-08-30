@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Center</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .upload-box {
+      background: #ffeaba;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    .upload-box:hover {
+      background: #ffd980;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h2>📤 Download Zone</h2>
+    <p>Choose what you want to download for <strong id="subjectName"></strong>:</p>
+
+    <div class="upload-box" onclick="alert('Upload Question Paper (not functional yet)')">
+      📄  Question Papers
+    </div>
+
+    <div class="upload-box" onclick="alert('Upload Notes (not functional yet)')">
+      📚  Notes
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("subjectName").innerText = params.get("subject") || "Unknown Subject";
+  </script>
+</body>
+</html>

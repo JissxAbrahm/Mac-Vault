@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NoteVerse</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <h1>🚀 MAC-VAULT</h1>
+    <p>Your chill hub for notes & question papers ✨</p>
+
+    <div class="dropdowns">
+      <select id="courseSelect">
+        <option value="">📘 Select Course</option>
+        <option value="bca">BCA</option>
+        <option value="bsc">BBA</option>
+        <option value="bcom">B.Com</option>
+         <option value="bcom">BT</option>
+          <option value="bcom">BA</option>
+      </select>
+
+      <select id="semSelect" style="display:none;">
+        <option value="">🎓 Select Semester</option>
+        <option value="1">S 1</option>
+        <option value="2">S 2</option>
+        <option value="3">S 3</option>
+        <option value="4">S 4</option>
+        <option value="5">S 5</option>
+        <option value="6">S 6</option>
+      </select>
+
+      <button id="nextBtn" style="display:none;">Continue ➡️</button>
+    </div>
+  </div>
+
+  <script>
+    const courseSelect = document.getElementById('courseSelect');
+    const semSelect = document.getElementById('semSelect');
+    const nextBtn = document.getElementById('nextBtn');
+
+    courseSelect.addEventListener('change', () => {
+      semSelect.style.display = courseSelect.value ? 'block' : 'none';
+      nextBtn.style.display = 'none';
+    });
+
+    semSelect.addEventListener('change', () => {
+      nextBtn.style.display = semSelect.value ? 'inline-block' : 'none';
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const course = courseSelect.value;
+      const semester = semSelect.value;
+      window.location.href = `subject.html?course=${course}&sem=${semester}`;
+    });
+  </script>
+</body>
+</html>

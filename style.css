@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, #1a0138  0%, #61094f   100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #222;
+}
+
+.main-container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background: rgba(123, 20, 20, 0.15); /* glassy */
+  backdrop-filter: blur(1000px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+
+ 
+  box-shadow: 0 12px 40px rgba(0, 20, 0, 1.5), 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+
+  /* Optional: Slight 3D transform */
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+select, button {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+select:focus, button:focus {
+  outline: none;
+  transform: scale(1.02);
+}
+
+button {
+  background:#149ef3  ;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffd980  ;
+}
+
+.marquee-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none; /* so clicks pass through */
+  z-index: 0; /* behind your content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.marquee {
+  white-space: nowrap;
+  display: flex;
+  font-size: 64px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  animation: marqueeMove 20s linear infinite;
+  user-select: none;
+}
+
+.marquee span {
+  padding-right: 3rem; /* spacing between repeats */
+}
+
+.marquee-solid {
+  color: white;
+  animation-duration: 25s;
+  opacity: 0.15; /* subtle behind effect */
+}
+
+.marquee-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1.5px white;
+  text-stroke: 1.5px white;
+  animation-duration: 35s;
+  opacity: 0.12;
+}
+
+/* Animate left to right continuously */
+@keyframes marqueeMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Make sure your main content container is above this */
+.main-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(255 255 255 / 0.9);
+  /* your existing styles */
+}
